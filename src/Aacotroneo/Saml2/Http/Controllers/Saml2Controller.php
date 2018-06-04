@@ -73,7 +73,7 @@ class Saml2Controller extends Controller
     {
         $error = $this->saml2Auth->sls(config('saml2_settings.retrieveParametersFromServer'));
         if (!empty($error)) {
-            throw new \Exception("Could not log out");
+            throw new \Exception('Could not log out due to ' . \implode(' | ', $error));
         }
 
         return redirect(config('saml2_settings.logoutRoute')); //may be set a configurable default
